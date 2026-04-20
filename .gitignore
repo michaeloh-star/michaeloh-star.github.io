@@ -2,3 +2,4 @@ node_modules/
 playwright-report/
 test-results/
 accessFlow-raw-audits-*.jsonl
+SDK/acsbe-accessflow-sdk-1.1.0/saucectl-playwright-example/
