@@ -1,8 +1,10 @@
+/// <reference types="node" />
 import { defineConfig } from '@playwright/test';
 
 const port = 4173;
 
 export default defineConfig({
+  globalTeardown: require.resolve('@acsbe/accessflow-sdk/dist/src/playwright/global-teardown'),
   testDir: './tests',
   timeout: 60_000,
   expect: {

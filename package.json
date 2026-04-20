@@ -10,6 +10,7 @@
   "devDependencies": {
     "@acsbe/accessflow-sdk": "file:SDK/acsbe-accessflow-sdk-1.1.0.tgz",
     "@playwright/test": "^1.54.1",
+    "@types/node": "^25.6.0",
     "http-server": "^14.1.1"
   }
 }
