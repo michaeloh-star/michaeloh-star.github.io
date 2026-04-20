@@ -1,0 +1,26 @@
+.aflw-hidden {
+	display    : none !important;
+	visibility : hidden !important;
+	height     : 0 !important;
+	width      : 0 !important;
+	border     : none 0 !important;
+	padding    : 0 !important;
+}
+
+[data-aflw-clickable] {
+	cursor : pointer;
+}
+
+.aflw-screenshot {
+	outline-offset   : 5px !important;
+	outline          : solid 2px lightcoral !important;
+	transform        : scale(0.9) !important;
+	transform-origin : top center !important;
+}
+
+* {
+	transition: none !important;
+    transition-property: none !important;
+    animation: none !important;
+    animation-name: none !important;
+}

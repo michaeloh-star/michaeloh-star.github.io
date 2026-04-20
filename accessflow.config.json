@@ -1,0 +1,9 @@
+{
+  "issuesFoundThreshold": {
+    "extreme": 0,
+    "high": 50,
+    "medium": 100,
+    "low": 200
+  },
+  "localCheck": true
+}

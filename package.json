@@ -1,0 +1,15 @@
+{
+  "name": "accessibility-site-accessflow-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test:accessibility": "playwright test",
+    "test:accessibility:headed": "playwright test --headed",
+    "install:browsers": "playwright install --with-deps chromium"
+  },
+  "devDependencies": {
+    "@acsbe/accessflow-sdk": "file:SDK/acsbe-accessflow-sdk-1.1.0.tgz",
+    "@playwright/test": "^1.54.1",
+    "http-server": "^14.1.1"
+  }
+}

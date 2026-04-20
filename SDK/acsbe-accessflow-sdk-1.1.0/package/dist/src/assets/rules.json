@@ -1,0 +1,2529 @@
+[
+    {
+        "name": "Link Context",
+        "route": "link-context",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T01:42:35.000Z",
+        "modified": "2023-02-05T15:43:36.786Z",
+        "shortCode": "linkContext",
+        "confidence": "low",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Links should indicate their functionality and destination to assistive technology",
+        "addSROnlyCSS": true,
+        "saveSuccesses": true,
+        "issueDescription": "Visual cues on pages provide context to links or hint functionality to users with sight, even if the links aren't fully descriptive. Screen reader users need to know where a link will take them based on the anchor text without additional context.",
+        "issueResolution": "<p>Examples include links to the shopping cart, to the company's Facebook page, to the site's search page, or to other similar destinations.</p>\n<p>If the link's anchor text doesn't explicitly describe those destinations, add screen-reader only text describing the destination:</p>\n<pre class=\"language-html\"><code>&lt;a href=\"/cart\"&gt;\n  &lt;span class=\"sr-only\"&gt;Shopping Cart&lt;/span&gt;\n  &lt;svg aria-hidden=\"true\"&gt;...&lt;/svg&gt;\n&lt;/a&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "srOnly",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "{suggestion}",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211#link-purpose-in-context"
+        ]
+    },
+    {
+        "name": "Font Sizes",
+        "route": "font-sizes",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T11:35:07.000Z",
+        "modified": "2022-03-27T18:49:26.276Z",
+        "shortCode": "fontSizes",
+        "severity": "low",
+        "criteria": "general",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Text should be scalable to 200% without loss of content or functionality",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "When text is scaled to 200%, content may be clipped, overlap, or overflow its container if styles like fixed heights, fixed widths, hidden overflow, or absolute positioning prevent proper reflow.",
+        "issueResolution": "<p>Do not use less than 12px font-sizes. Ideally, don't go lower than 14px.</p><pre class=\"language-html\"><code>&lt;style&gt;\nbody * {\n    font-size: 15px;\n}\n&lt;/style&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Empty Headings",
+        "route": "empty-headings",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:14:46.000Z",
+        "modified": "2022-03-27T18:52:21.349Z",
+        "shortCode": "emptyHeadings",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "heading-discernible"
+        ],
+        "severity": "high",
+        "criteria": "headings",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Empty headings should be excluded from assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "Screen reader users use header navigation to skim through pages and quickly learn their topics. If empty headers exist, the header navigation feature breaks, and assistive technology users will find the page very difficult to browse.",
+        "issueResolution": "<p>Remove empty heading tags from your HTML, or add content to them.</p>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "presentation",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-hidden",
+                "suggestedFixValue": "true",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=144%2C1412%2C211%2C143#headings-and-labels"
+        ]
+    },
+    {
+        "name": "Nested Tables",
+        "route": "nested-tables",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:17:48.000Z",
+        "modified": "2022-03-27T18:53:30.173Z",
+        "shortCode": "nestedTables",
+        "severity": "high",
+        "criteria": "tables",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Tables should not be nested",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "Nested tables are often misinterpreted by screen readers, making it hard for users to follow the intended structure and meaning of the data.",
+        "issueResolution": "<p>Avoid nesting tables. Use separate tables with clear headings, and if tables are used for layout, assign <strong>role=\"presentation\"</strong> or <strong>role=\"none\"</strong> to each table element.</p>\n<pre class=\"language-html\"><code>&lt;!-- Use separate tables with clear headings instead of nesting --&gt;\n&lt;table&gt;\n  &lt;caption&gt;Sales Data&lt;/caption&gt;\n  &lt;thead&gt;\n    &lt;tr&gt;\n      &lt;th&gt;Product&lt;/th&gt;\n      &lt;th&gt;Q1 Sales&lt;/th&gt;\n      &lt;th&gt;Q2 Sales&lt;/th&gt;\n    &lt;/tr&gt;\n  &lt;/thead&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;td&gt;Widget A&lt;/td&gt;\n      &lt;td&gt;$1,000&lt;/td&gt;\n      &lt;td&gt;$1,200&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;\n\n&lt;table&gt;\n  &lt;caption&gt;Regional Breakdown&lt;/caption&gt;\n  &lt;thead&gt;\n    &lt;tr&gt;\n      &lt;th&gt;Region&lt;/th&gt;\n      &lt;th&gt;Sales&lt;/th&gt;\n    &lt;/tr&gt;\n  &lt;/thead&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;td&gt;North&lt;/td&gt;\n      &lt;td&gt;$500&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;\n\n&lt;!-- If tables are used for layout, assign role=\"presentation\" or role=\"none\" --&gt;\n&lt;table role=\"presentation\"&gt;\n  &lt;tr&gt;\n    &lt;td&gt;\n      &lt;table role=\"presentation\"&gt;\n        &lt;tr&gt;\n          &lt;td&gt;Layout content&lt;/td&gt;\n        &lt;/tr&gt;\n      &lt;/table&gt;\n    &lt;/td&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "presentation",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/standards-guidelines/wcag/"
+        ]
+    },
+    {
+        "name": "Empty List",
+        "route": "empty-list",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:08:41.000Z",
+        "modified": "2022-02-26T20:53:50.741Z",
+        "shortCode": "emptyList",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "list-not-empty"
+        ],
+        "severity": "low",
+        "criteria": "errors",
+        "WCAGLevel": "none",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Lists without items or with a single item should lose the list role",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "An empty list will still be visible for screen reader users. It may frustrate and confuse users as to whether the list is actually empty or there is a screen-reader/accessibility issue that prevents their screen-reader from reading the list items.",
+        "issueResolution": "<p>Remove the empty HTML list tags (<strong>UL/OL</strong>) or give them <strong>aria-hidden=true to </strong>make screen-readers ignore them.</p>\n<pre class=\"language-html\"><code>&lt;ul aria-hidden=\"true\"&gt;&lt;/ul&gt;\n&lt;ol aria-hidden=\"true\"&gt;&lt;/ol&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-hidden",
+                "suggestedFixValue": "true",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Untagged Headings",
+        "route": "untagged-headings",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:15:12.000Z",
+        "modified": "2022-03-27T18:52:57.370Z",
+        "shortCode": "untaggedHeadings",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Headings should be tagged for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Text that visually functions as a heading for sighted users should also be tagged as a heading for screen reader users.",
+        "issueResolution": "<p>If you specifically coded headings without native HTML tags (like <code>h1</code>, <code>h2</code>, etc.) for SEO reasons or otherwise, use <strong>role=\"heading\"</strong> and <strong>aria-level=\"1/2/3/4/5/6\"</strong> (the appropriate heading level) to make sure that screen readers announce them as headings. For example, <code>role=\"heading\" aria-level=\"3\"</code> will be treated by screen readers as a <code>h3</code> heading.</p>\n<pre class=\"language-html\"><code>&lt;span role=\"heading\" aria-level=\"3\"&gt;This will be treated by screen readers as a h3 heading&lt;/span&gt;</code></pre>\n<p>Alternatively, you can directly code those elements as native HTML headings.</p>\n<pre class=\"language-html\"><code>&lt;h3&gt;This is a native HTML heading&lt;/h3&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "heading",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-level",
+                "suggestedFixValue": "1/2/3/4/5/6",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "engineRules": [
+            "heading-mismatch"
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Iframe Labeling",
+        "route": "iframe-labeling",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T21:58:35.000Z",
+        "modified": "2022-02-25T21:27:47.735Z",
+        "shortCode": "iframeLabeling",
+        "severity": "extreme",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Iframes should have a descriptive label",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "An iframe needs a label that describes its purpose to screen reader users.",
+        "issueResolution": "<p>Use the&nbsp;<strong>aria-label&nbsp;</strong>attribute to indicate the functionality of a given iframe like in the example below:</p>\n<pre class=\"language-html\"><code>&lt;iframe src=\"...\" aria-label=\"YouTube tutorial video\"&gt;&lt;/iframe&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#name-role-value"
+        ]
+    },
+    {
+        "name": "Form Submissions Status",
+        "route": "form-submissions-status",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:02:37.000Z",
+        "modified": "2022-02-26T12:23:04.562Z",
+        "shortCode": "formSubmissionsStatus",
+        "severity": "high",
+        "criteria": "forms",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Submission statuses (success/failure) should be indicated to assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Screen reader users rely on status messages to automatically announce when a form is submitted. If status messages are not automatically announced, screen reader users will have to attempt to understand the status by browsing around picking clues.",
+        "issueResolution": "<p>Include the&nbsp;<strong>role=alert&nbsp;</strong>attributes on the success/failure message of your forms.</p>\n<p>Please note that the alert message should appear only once to announce the form status and not every field validation. Field validations should be handled separately.</p>\n<pre class=\"language-html\"><code>&lt;div role=\"alert\"&gt;Thank you, we'll get back to you shortly.&lt;/div&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131%2C411#status-messages"
+        ]
+    },
+    {
+        "name": "Enter Clickability",
+        "route": "enter-clickability",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:11:08.000Z",
+        "modified": "2022-02-27T12:26:45.500Z",
+        "shortCode": "enterClickability",
+        "severity": "extreme",
+        "criteria": "keyboard",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Interactive elements should be clickable using the Enter key",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "Only links with an href attribute, buttons, and a handful of other, less usable tags can be triggered using the Enter key by default. If you've used different elements and added JS click events to them, those elements are not operable using the keyboard.",
+        "issueResolution": "<p>Add JavaScript to ensure that elements that are not clickable by default are clickable using the enter key. Alternatively, use native <strong>BUTTON </strong>and <strong>A</strong> HTML elements, which are keyboard clickable by default. Note that <strong>A</strong> tags (links) are only clickable if they include an <strong>HREF</strong> attribute.</p>\n<p>If you choose to go the JavaScript route, you can copy and paste the below, which will add that functionality to your website. However, make sure to include your clickable selectors where the <strong>\".your-clickable-selectors\"</strong> text appears.&nbsp;</p>\n<pre class=\"language-javascript\"><code>document.addEventListener('keydown', e =&gt; {\n    if( e.which !== 13 || ['BUTTON', 'A'].includes(e.target.tagName) || ! e.target.closest('.your-clickable-selectors') ) return;\n    e.target.click();\n})</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211#keyboard-accessible"
+        ]
+    },
+    {
+        "name": "Button Roles",
+        "route": "button-roles",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T01:58:13.000Z",
+        "modified": "2022-03-27T17:25:43.093Z",
+        "shortCode": "buttonRoles",
+        "confidence": "low",
+        "severity": "extreme",
+        "criteria": "interactive-content",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Buttons should be tagged for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "If interactive elements cannot be identified as buttons, screen reader users may not realize the element is actionable, which can stop them from submitting forms, opening dialogs, or performing other intended actions.",
+        "issueResolution": "<p>Add <strong>role=\"button\"</strong> to the custom navigation region, or use a HTML <code>&lt;button&gt;</code> element.</p><pre class=\"language-html\"><code>&lt;button type=\"button\"&gt;Button text&lt;/button&gt;\n&lt;div role=\"button\"&gt;Button text&lt;/div&gt;\n&lt;span role=\"button\"&gt;Button text&lt;/span&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "tag",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "button",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "button",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#name-role-value"
+        ]
+    },
+    {
+        "name": "New Window Links",
+        "route": "new-window-links",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T02:00:22.000Z",
+        "modified": "2022-03-27T17:26:01.122Z",
+        "shortCode": "newWindowLinks",
+        "severity": "low",
+        "criteria": "interactive-content",
+        "WCAGLevel": "none",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Warning a user when a link triggers a new browser window is recommended",
+        "addSROnlyCSS": true,
+        "saveSuccesses": true,
+        "issueDescription": "It's good practice to warn users about the expected behavior when activating a link triggers a new window.",
+        "issueResolution": "<p>Add a visibly hidden text element that contains <strong>'Opens new window'</strong>. Assign a unique <strong>id</strong> attribute to the element and add <strong>aria-describedby</strong> to the link, referencing the text element's id.</p>\n<pre class=\"language-html\"><code>&lt;!-- Visibly hidden text element with unique id --&gt;\n&lt;span id=\"new-window-warning-1\" class=\"sr-only\"&gt;Opens new window&lt;/span&gt;\n\n&lt;!-- Link with aria-describedby referencing the hidden text --&gt;\n&lt;a href=\"https://example.com\" target=\"_blank\" aria-describedby=\"new-window-warning-1\"&gt;\n  Visit our website\n&lt;/a&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "srOnly",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "new window",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Background Images",
+        "route": "background-images",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:10:54.000Z",
+        "modified": "2022-02-25T17:47:38.151Z",
+        "shortCode": "backgroundImages",
+        "severity": "medium",
+        "criteria": "graphics",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Non decorative Background images should be tagged and labeled",
+        "addSROnlyCSS": true,
+        "saveSuccesses": true,
+        "issueDescription": "Background images should receive alternative text just like regular images do unless used as decorative elements and do not provide any information or additional context to the users.",
+        "issueResolution": "<p>Use the <strong>screen-reader-only</strong> technique combined with the <strong>role=\"img\"</strong> and <strong>aria-label</strong> attributes to indicate to screen readers that there's an image and the description for that image. Make sure to include the embedded text of the image alongside the objects that comprise it in the <strong>aria-label</strong> description.</p><p>Add <strong>role=\"img\"</strong> to the first discernible sr-only element in the background image.</p><pre class=\"language-html\"><code>&lt;div style=\"background-image: url(...)\"&gt;\n    &lt;span class=\"sr-only\" role=\"img\" aria-label=\"Shop Tennis gear. Two people playing professional tennis in a stadium with spectators.\"&gt;&lt;/span&gt;\n&lt;/div&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#non-text-content"
+        ]
+    },
+    {
+        "name": "Main Heading",
+        "route": "main-heading",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:13:17.000Z",
+        "modified": "2022-03-27T18:51:56.426Z",
+        "shortCode": "mainHeading",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Each page should have a main heading",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "There should be one h1 heading element that defines the subject of the main content on the page.",
+        "issueResolution": "<p>Include single, descriptive, visible H1 (main header) on every page. Make sure that the header is placed where the content section of the page starts, and that it provides enough information to determine the page's topic.</p>\n<pre class=\"language-html\"><code>&lt;h1&gt;I'm a main heading...&lt;/h1&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Active Tab",
+        "route": "active-tab",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T22:00:01.000Z",
+        "modified": "2022-02-26T00:38:49.649Z",
+        "shortCode": "activeTab",
+        "isAutoResolvable": false,
+        "engineRules": [],
+        "severity": "high",
+        "criteria": "context",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "The active tab should be tagged as such for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Screen readers require properly coded states for interactive elements. Tabs can have active and inactive states, and just like an active state usually is visually distinct, this should be indicated to screen reader users in the code.",
+        "issueResolution": "<p>Add the <strong>aria-selected=true</strong> to the active tab, alongside the&nbsp;<strong>role=tab</strong> to indicate that the element is indeed a tab. It's also essential to make sure to change the <strong>aria-selected=true</strong> to <strong>false </strong>when another tab becomes active (and that other tab should receive <strong>true</strong>).</p>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "tab",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-selected",
+                "suggestedFixValue": "true",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#name-role-value"
+        ]
+    },
+    {
+        "name": "Fake Hidden Content",
+        "route": "fake-hidden-content",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T11:59:59.000Z",
+        "modified": "2022-02-26T20:23:47.270Z",
+        "shortCode": "fakeHiddenContent",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "visibility-misuse"
+        ],
+        "severity": "extreme",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Visibly hidden content should not be exposed to assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "When elements are visually hidden but still exposed to assistive technology, screen reader users may encounter content that should not be available in the current interface. This can obscure the current state of the page and lead to confusion about what information or controls are available.",
+        "issueResolution": "<p>Use <strong>aria-hidden=\"true\"</strong> to remove elements from the accessibility tree when they should not be exposed to assistive technology.</p>\n<pre class=\"language-html\"><code>&lt;div aria-hidden=\"true\"&gt;\n  &lt;p&gt;This content is hidden from assistive technology&lt;/p&gt;\n&lt;/div&gt;</code></pre>\n<p>Consider using CSS techniques, such as <code>display:none</code> or <code>visibility:hidden</code> when the content should be hidden from all users.</p>\n<pre class=\"language-html\"><code>&lt;!-- Using display: none --&gt;\n&lt;div style=\"display: none;\"&gt;\n  &lt;p&gt;This content is hidden from all users&lt;/p&gt;\n&lt;/div&gt;\n\n&lt;!-- Using visibility: hidden --&gt;\n&lt;div style=\"visibility: hidden;\"&gt;\n  &lt;p&gt;This content is hidden from all users&lt;/p&gt;\n&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-hidden",
+                "suggestedFixValue": "true",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html"
+        ]
+    },
+    {
+        "name": "Broken Tabindex",
+        "route": "broken-tabindex",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:16:38.000Z",
+        "modified": "2022-02-27T17:10:55.599Z",
+        "shortCode": "brokenTabindex",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "The tabindex attribute should be assigned a valid value",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "Invalid tabindex values are ignored by browsers, while positive values override the natural focus order. Applying the tabindex attribute incorrectly can break the expected navigation flow for keyboard users.",
+        "issueResolution": "<p>If the element should be navigable, give it&nbsp;<strong>tabindex=0.</strong> If you've provided tabindex above 0 because you try to control focus order, then reorder elements in your HTML, but in any case, do not use tabindex above 0.</p>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "tabindex",
+                "suggestedFixValue": "0",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html"
+        ]
+    },
+    {
+        "name": "Incorrect Main Landmark",
+        "route": "incorrect-main-landmark",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T21:59:22.000Z",
+        "modified": "2022-02-25T21:36:15.024Z",
+        "shortCode": "incorrectMainLandmark",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "region-main-content-misuse"
+        ],
+        "severity": "high",
+        "criteria": "landmarks",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "An element without main content is tagged as a main landmark",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Incorrectly tagging the main landmark may cause screen reader users to misunderstand where the primary content begins or ends, leading to confusion and inefficient navigation.",
+        "issueResolution": "<p>If the failing element is a custom main landmark, remove <strong>role=\"main\"</strong>. If the failing element is coded using a HTML <strong>&lt;main&gt;</strong> tag, change the tag to a <strong>&lt;div&gt;</strong> or an element with a suitable role.</p>\n<pre class=\"language-html\"><code>&lt;div role=\"main\"&gt;...&lt;/div&gt;\n&lt;div&gt;...&lt;/div&gt;\n\n&lt;main&gt;...&lt;/main&gt;\n&lt;div&gt;...&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "role",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "tag",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "div",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Broken Submenu Indication",
+        "route": "broken-submenu-indication",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T11:04:31.000Z",
+        "modified": "2022-02-26T17:32:07.084Z",
+        "shortCode": "brokenSubmenuIndication",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "menu-trigger-clickable"
+        ],
+        "severity": "high",
+        "criteria": "interactive-content",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "ARIA relationship and state attributes should only be applied to elements with appropriate roles",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Interactive elements that trigger additional content should only have relationship and state ARIA attributes, such as aria-expanded and aria-controls, if they have interactive roles, such as button, tab, combobox and in rarer cases, link.",
+        "issueResolution": "<p>Make sure relationship and state ARIA attributes are only applied to elements with interactive roles, such as <strong>button</strong>, <strong>tab</strong>, and <strong>combobox</strong>. In rare cases, <strong>aria-expanded</strong> can be applied to link elements or elements with <strong>role=\"link\"</strong>, however this should only be done when the link both navigates and expands content.</p><pre class=\"language-html\"><code>&lt;button aria-expanded=\"true\" aria-haspopup=\"menu\"&gt;Menu&lt;/button&gt;\n&lt;a href=\"#\" role=\"link\" aria-expanded=\"true\"&gt;Link that expands content&lt;/a&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "aria-expanded",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "aria-haspopup",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#name-role-value"
+        ]
+    },
+    {
+        "name": "Keyboard Navigation",
+        "route": "keyboard-navigation",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:17:06.000Z",
+        "modified": "2022-02-27T17:19:08.094Z",
+        "shortCode": "keyboardNavigation",
+        "severity": "extreme",
+        "criteria": "interactive-content",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Interactive elements should be keyboard navigable",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "Interactive elements should be keyboard navigable. If a custom interactive element is not keyboard navigable, keyboard users will not be able to interact with it.",
+        "issueResolution": "<p>Add <strong>tabindex=\"0\"</strong> to the custom interactive element.</p>\n<pre class=\"language-html\"><code>&lt;!-- Before: custom interactive element without tabindex --&gt;\n&lt;div onclick=\"handleClick()\"&gt;Click me&lt;/div&gt;\n\n&lt;!-- After: custom interactive element with tabindex=\"0\" --&gt;\n&lt;div tabindex=\"0\" onclick=\"handleClick()\"&gt;Click me&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "tabindex",
+                "suggestedFixValue": "0",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "engineRules": [
+            "interactive-not-tabbable"
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Letter Spacing",
+        "route": "letter-spacing",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:07:29.000Z",
+        "modified": "2022-03-27T18:49:44.186Z",
+        "shortCode": "letterSpacing",
+        "severity": "low",
+        "criteria": "general",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Letter spacing should scale to at least 0.12 times the font size without loss of content or functionality",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "When letter spacing is increased to 0.12 times the font size, text may be clipped, overlap, or overflow its container if styles like fixed widths, fixed heights, hidden overflow, or forced no-wrap prevent proper reflow.",
+        "issueResolution": "<p>Do not use negative values in letter-spacing. Certain fonts look ok with up to -1px in letter spacing, but less than that is almost universally problematic.</p>\n<pre class=\"language-html\"><code>&lt;style&gt;\nbody * {\n    letter-spacing: 0;\n}\n&lt;/style&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=144%2C211%2C1412#text-spacing"
+        ]
+    },
+    {
+        "name": "Navigation Tagging",
+        "route": "navigation-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:57:54.000Z",
+        "modified": "2022-02-26T17:45:13.860Z",
+        "shortCode": "navigationTagging",
+        "severity": "high",
+        "criteria": "navigation",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Navigation elements should be tagged as landmarks",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Screen reader users have different controls to help them browse to specific elements on the page like regions and landmarks such as navigations. To ensure that screen readers can provide that functionality, navigation regions should be tagged accordingly.",
+        "issueResolution": "<p>Add the&nbsp;<strong>role=navigation</strong> or code the navigation regions using the HTML&nbsp;<strong>NAV&nbsp;</strong>tag. Make sure to add an&nbsp;<strong>ARIA-LABEL</strong> to indicate the type of navigation. Is this the main navigation? Products navigation? Support navigation? No need to include the word <strong>\"navigation\"</strong> or <strong>\"menu.\"</strong> Screen readers, by default, will announce that, like in the below example, which will be announced <strong>\"Man's clothing navigation region\".</strong></p>\n<pre class=\"language-html\"><code>&lt;nav aria-label=\"Man's clothing\"&gt;\n    &lt;ul&gt;...&lt;/ul&gt;\n&lt;/nav&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "tag",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "nav",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "{suggestion}",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Broken Nav Tagging",
+        "route": "broken-nav-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T11:00:08.000Z",
+        "modified": "2022-02-26T18:42:17.044Z",
+        "shortCode": "brokenNavTagging",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "menu-avoid",
+            "menu-bar-avoid"
+        ],
+        "severity": "high",
+        "criteria": "navigation",
+        "WCAGLevel": "none",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Avoid using role menu/menubar for navigation elements",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Using role=menu and role=menubar for navigation elements is a bad practice, and screen reader users, especially JAWS users, find it difficult to operate. Those menu types are better used in desktop applications than web applications.",
+        "issueResolution": "<p>Remove <strong>role=\"menu\"</strong> or <strong>role=\"menubar\"</strong> from the failing element.</p><pre class=\"language-html\"><code>&lt;nav&gt;\n    &lt;ul&gt;\n        &lt;li&gt;&lt;a href=\"#\"&gt;Navigation Item&lt;/a&gt;&lt;/li&gt;\n    &lt;/ul&gt;\n&lt;/nav&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "navigation",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Popup Focus",
+        "route": "popup-focus",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:15:39.000Z",
+        "modified": "2022-02-27T19:24:44.310Z",
+        "shortCode": "popupFocus",
+        "severity": "extreme",
+        "criteria": "interactive-content",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Keyboard focus should move into and lock inside active dialogs",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Dialogs that appear on pages without receiving keyboard focus immediately on interaction often leave users navigating content behind the dialog and make it difficult or impossible for keyboard and screen reader users to access the dialog itself.",
+        "issueResolution": "<p>When a dialog opens, use JavaScript to place keyboard focus on the <strong>first interactive element</strong> within the dialog. If static content, such as lists, tables, or paragraphs, appears before any interactive elements and it needs to be perceived in order to easily understand the content, <strong>tabindex=\"-1\"</strong> can be added to a static element at the start of the content to initially focus that element.</p>\n<pre class=\"language-javascript\"><code>// Focus the first interactive element within the dialog\nconst dialog = document.querySelector('.dialog');\nconst firstInteractiveElement = dialog.querySelector('button, a, input, select, textarea, [tabindex]:not([tabindex=\"-1\"])');\nif (firstInteractiveElement) {\n  firstInteractiveElement.focus();\n}\n\n// If static content needs to be focused first\nconst staticElement = dialog.querySelector('.dialog-content-start');\nif (staticElement) {\n  staticElement.setAttribute('tabindex', '-1');\n  staticElement.focus();\n}</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "tabindex",
+                "suggestedFixValue": "-1",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211#keyboard-accessible"
+        ]
+    },
+    {
+        "name": "Noninteractive Tabindex",
+        "route": "noninteractive-tabindex",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:18:03.000Z",
+        "modified": "2022-02-27T19:04:57.054Z",
+        "shortCode": "noninteractiveTabindex",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Non-interactive elements should not be keyboard navigable",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Allowing static content to receive keyboard focus creates unnecessary stops in the tab order, forcing users to tab through elements that provide no action and making keyboard navigation less intuitive.",
+        "issueResolution": "<p>Remove the <strong>tabindex</strong> attribute from the static element.</p>\n<pre class=\"language-html\"><code>&lt;!-- Before: static element with tabindex --&gt;\n&lt;div tabindex=\"0\"&gt;Static content&lt;/div&gt;\n\n&lt;!-- After: static element without tabindex --&gt;\n&lt;div&gt;Static content&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "tabindex",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "engineRules": [
+            "tabbable-non-interactive"
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html"
+        ]
+    },
+    {
+        "name": "Column Table Headers",
+        "route": "column-table-headers",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:21:30.000Z",
+        "modified": "2022-03-27T18:54:24.699Z",
+        "shortCode": "columnTableHeaders",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "table-column-header"
+        ],
+        "severity": "extreme",
+        "criteria": "tables",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Table column headers should be tagged for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "If a column header is not marked up with the correct role or scope, screen reader users cannot determine which header applies to each cell.",
+        "issueResolution": "<p>Use <strong>&lt;th scope=\"col\"&gt;</strong> or assign <strong>role=\"columnheader\"</strong> when building custom tables. Make sure each data cell is programmatically associated with the correct header so relationships are clear to assistive technology.</p>\n<pre class=\"language-html\"><code>&lt;table&gt;\n    &lt;thead&gt;\n        &lt;tr&gt;\n            &lt;th scope=\"col\"&gt;Name&lt;/th&gt;\n            &lt;th scope=\"col\"&gt;Age&lt;/th&gt;\n        &lt;/tr&gt;\n    &lt;/thead&gt;\n    &lt;tbody&gt;\n        &lt;tr&gt;\n            &lt;td&gt;John&lt;/td&gt;\n            &lt;td&gt;30&lt;/td&gt;\n        &lt;/tr&gt;\n    &lt;/tbody&gt;\n&lt;/table&gt;\n\n&lt;!-- OR for custom tables --&gt;\n&lt;div role=\"table\"&gt;\n    &lt;div role=\"row\"&gt;\n        &lt;div role=\"columnheader\"&gt;Name&lt;/div&gt;\n        &lt;div role=\"columnheader\"&gt;Age&lt;/div&gt;\n    &lt;/div&gt;\n&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "columnheader",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Main Landmark",
+        "route": "main-landmark",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T21:57:02.000Z",
+        "modified": "2022-02-26T00:49:08.688Z",
+        "shortCode": "mainLandmark",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "region-main-content"
+        ],
+        "severity": "high",
+        "criteria": "landmarks",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Each web page that uses landmark regions should have a main landmark",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "A main landmark (e.g., <main>) lets screen reader users quickly skip past repeated elements and jump straight to the primary content, improving navigation and orientation.",
+        "issueResolution": "<p>Where the main content on your page starts, give it&nbsp;<strong>role=main</strong> or engulf it with the&nbsp;<strong>MAIN&nbsp;</strong>HTML tag like in the example below:</p>\n<pre class=\"language-html\"><code>&lt;div role=\"main\"&gt;\n    &lt;h1&gt;Main page heading&lt;/h1&gt;\n&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "main",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Missing Nav Items",
+        "route": "missing-nav-items",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T11:01:47.000Z",
+        "modified": "2022-02-26T17:27:07.992Z",
+        "shortCode": "missingNavItems",
+        "severity": "high",
+        "criteria": "lists",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "List items in a navigation region should not be interactive",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Adding interactive behavior to <li> elements within a navigation list may prevent screen reader users from identifying the element as actionable, since <li> elements are announced as list items and expected to be static.",
+        "issueResolution": "<p>Always include a&nbsp;<strong>link, button</strong>, or <strong>span/div</strong> tags as navigation items and avoid using direct text nodes even if functionality is provided using JS.</p>\n<pre class=\"language-html\"><code>&lt;nav&gt;\n    &lt;ul&gt;\n        &lt;li&gt;Wrong: direct text node&lt;/li&gt;\n        &lt;li&gt;&lt;button&gt;Correct: direct HTML element&lt;/button&gt;&lt;/li&gt;\n    &lt;/ul&gt;\n&lt;/nav&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "",
+                "suggestedFixHTML": "<a href=\"item link...\">item text...</a>"
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"
+        ]
+    },
+    {
+        "name": "Aria Label Misuse",
+        "route": "aria-label-misuse",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:04:40.000Z",
+        "modified": "2022-02-26T20:34:51.488Z",
+        "shortCode": "ariaLabelMisuse",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "none",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "aria-label should be used with compatible roles",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "Using aria-label on elements that do not support the attribute can lead to the label being ignored, leaving users without the intended information.",
+        "issueResolution": "<p>Use a <strong>visually hidden</strong> element to provide the name or description instead of an <strong>aria-label</strong>.</p><pre class=\"language-html\"><code>&lt;div&gt;\n    &lt;span class=\"sr-only\"&gt;Screen reader only content&lt;/span&gt;\n    .......\n&lt;/div&gt;</code></pre>",
+        "suggestedFix": [],
+        "engineRules": [
+            "name-prohibited-no-aria-label"
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Skip Links",
+        "route": "skip-links",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:16:03.000Z",
+        "modified": "2022-02-27T13:17:03.748Z",
+        "shortCode": "skipLinks",
+        "severity": "medium",
+        "criteria": "landmarks",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Skip links are the preferred technique for bypassing repeated content",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Skip links let keyboard and screen reader users bypass repetitive navigation and jump directly to important sections such as main content, navigation, or footer. This improves efficiency, reduces keystrokes, and makes pages easier to use for those relying on assistive technology.",
+        "issueResolution": "<p>Add skip links as the first focusable elements on the page, directing users to regions marked with unique ids and appropriate landmarks such as <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, or <code>&lt;footer&gt;</code>. Keep them visually hidden until focused so they don't clutter the layout, but ensure they remain accessible to screen readers by avoiding <strong>aria-hidden=\"true\"</strong> or CSS <code>display:none</code>.</p><pre class=\"language-html\"><code>&lt;style&gt;\n.skip-link {\n    opacity: 0;\n    position: absolute;\n}\n\n.skip-link:focus-visible {\n    opacity: 1;\n    position: static;\n}\n&lt;/style&gt;\n\n&lt;body&gt;\n    &lt;a href=\"#content\" class=\"skip-link\"&gt;Skip to content&lt;/a&gt;\n    &lt;header&gt;&lt;/header&gt;\n    &lt;nav&gt;&lt;/nav&gt;\n    &lt;main id=\"content\"&gt;\n        &lt;h1&gt;Content&lt;/h1&gt;\n    &lt;/main&gt;\n    &lt;footer&gt;&lt;/footer&gt;\n&lt;/body&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "",
+                "suggestedFixHTML": "<a href=\"#content\">Skip to content</a>"
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/#bypass-blocks"
+        ]
+    },
+    {
+        "name": "Article Setup",
+        "route": "article-setup",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T21:58:10.000Z",
+        "modified": "2022-02-25T21:21:13.591Z",
+        "shortCode": "articleSetup",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "article-misuse"
+        ],
+        "severity": "low",
+        "criteria": "landmarks",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Only elements that function as articles should be tagged as article regions",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Using an <article> tag on content that is not self-contained and that cannot stand on its own outside the context of the page, such as a blog post, news story, or forum entry, causes screen readers to announce misleading information about the purpose the content in relation to the main subject of the page.",
+        "issueResolution": "<p>Assign <strong>role=\"presentation\"</strong> to the failing element or use a different HTML tag that is more appropriate for the function of the element.</p><pre class=\"language-html\"><code>&lt;article role=\"presentation\"&gt;&lt;/article&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "presentation",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Custom Control Field",
+        "route": "custom-control-field",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:01:03.000Z",
+        "modified": "2022-02-26T15:53:01.815Z",
+        "shortCode": "customControlField",
+        "severity": "high",
+        "criteria": "forms",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Custom checkbox and radio inputs should be made accessible",
+        "addSROnlyCSS": true,
+        "saveSuccesses": true,
+        "issueDescription": "Screen readers have built-in mechanisms to handle checkboxes. By default, assistive technology does not support custom checkboxes, and using those may prevent screen reader users from interacting with the fields. ",
+        "issueResolution": "<p>If you are using standard <strong>LABEL </strong>and <strong>INPUT </strong>fields to design the custom checkbox using CSS, you need to ensure that the <strong>checkbox input </strong>is fully visible to assistive technology and the browser, but only visually hidden. To ensure that, you can hide it using opacity, width, height, and positioning, but <strong>never hide it using display=none or visibility=hidden.</strong></p>\n<pre class=\"language-html\"><code>&lt;div&gt;\n    &lt;label for=\"checkbox-input\"&gt;Custom design&lt;/label&gt;\n    &lt;input type=\"checkbox\" id=\"checkbox-input\" style=\"position: absolute; top: -100%, left: -100%, opacity: 0; width: 0, height: 0;\"&gt;\n&lt;/div&gt;</code></pre>\n<p>Alternatively, if you are using a completely custom checkbox mechanism without a standard checkbox input, create a standard select field with all the options and make it available only for screen readers using the <strong>screen reader only </strong>technique. Then, hide the custom select box from screen readers using <strong>aria-hidden=true.</strong> Don't forget to add the same functionality to this hidden field as your custom one.</p>\n<p>Using this method, screen readers will not \"see\" the custom field but will see the standard one and interact with it regularly.</p>\n<pre class=\"language-html\"><code>&lt;div class=\"checkbox\" aria-hidden=\"true\"&gt;✓&lt;/div&gt;\n&lt;input type=\"checkbox\" class=\"sr-only\"&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"
+        ]
+    },
+    {
+        "name": "Misused Nav Tagging",
+        "route": "misused-nav-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T11:03:25.000Z",
+        "modified": "2022-02-26T18:36:21.056Z",
+        "shortCode": "misusedNavTagging",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "navigation-misuse"
+        ],
+        "severity": "high",
+        "criteria": "landmarks",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "An element without navigation links is tagged as a navigation landmark",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "Screen readers rely on accurate tagging and labeling to provide necessary context. If an element that does not contain navigation links is tagged as a navigation landmark, screen reader users may lose orientation and find the page's structure difficult to understand.",
+        "issueResolution": "<p>Add <strong>role=\"presentation\"</strong> to the incorrect <code>&lt;nav&gt;</code> element or remove <strong>role=\"navigation\"</strong> if a different element is used.</p>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "presentation",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"
+        ]
+    },
+    {
+        "name": "Broken Aria Reference",
+        "route": "broken-aria-reference",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:05:06.000Z",
+        "modified": "2022-02-26T20:40:43.445Z",
+        "shortCode": "brokenAriaReference",
+        "severity": "high",
+        "criteria": "errors",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Aria describedby/labelledby must point to a valid, existing element ID",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Screen readers rely on the HTML to provide explicit references between elements in order to parse the content and announce it to screen readers correctly. If the HTML includes broken ARIA references, screen reader users may not be able to browse properly. ",
+        "issueResolution": "<p>Make sure that&nbsp;<strong>aria-describedby&nbsp;</strong>and&nbsp;<strong>aria-labeledby</strong> attributes point to an existing, screen-reader-visible element on the screen with proper text content.</p>\n<pre class=\"language-html\"><code>&lt;button aria-describedby=\"button-description\"&gt;Load more&lt;/button&gt;\n&lt;span id=\"button-descriptionc\"&gt;Additional gallery images will appear in a popup&lt;/span&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131%2C411#parsing"
+        ]
+    },
+    {
+        "name": "Load Autofocus",
+        "route": "load-autofocus",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:07:28.000Z",
+        "modified": "2022-02-26T20:48:32.158Z",
+        "shortCode": "loadAutofocus",
+        "severity": "high",
+        "criteria": "interactive-content",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Avoid using autofocus",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Make sure that no element has an autofocus attribute.",
+        "issueResolution": "<p>Remove the&nbsp;<strong>autofocus</strong> attribute from the element.</p>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "autofocus",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Table Layouts",
+        "route": "table-layouts",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:19:14.000Z",
+        "modified": "2022-03-27T18:53:51.293Z",
+        "shortCode": "tableLayouts",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "table-misuse"
+        ],
+        "severity": "high",
+        "criteria": "tables",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Only elements that function as data tables should be tagged as table",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "When a layout table is marked up with HTML elements like <table> or <tr>, or assigned table ARIA roles, screen readers announce a data table structure with rows, columns, and headers, even though the table is only used for page layout.",
+        "issueResolution": "<p>Avoid using table markup or roles for visual layout. Use CSS for page structure, and if a table must be used for layout, remove semantic roles by adding <strong>role=\"presentation\"</strong> or <strong>role=\"none\"</strong>.</p><pre class=\"language-html\"><code>&lt;!-- Use CSS for layout instead of tables --&gt;\n&lt;div class=\"layout-container\"&gt;\n  &lt;div class=\"column\"&gt;Content&lt;/div&gt;\n  &lt;div class=\"column\"&gt;Content&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- If table must be used for layout, remove semantic roles --&gt;\n&lt;table role=\"presentation\"&gt;\n  &lt;tr&gt;&lt;td&gt;Content&lt;/td&gt;&lt;td&gt;Content&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;\n\n&lt;table role=\"none\"&gt;\n  &lt;tr&gt;&lt;td&gt;Content&lt;/td&gt;&lt;td&gt;Content&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "presentation",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Footer Landmark",
+        "route": "footer-landmark",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T21:58:55.000Z",
+        "modified": "2022-02-25T21:30:48.418Z",
+        "shortCode": "footerLandmark",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "region-footer"
+        ],
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Footer region should be correctly marked up",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Ensure that the footer region is correctly marked up.",
+        "issueResolution": "<p>Use the&nbsp;<strong>role=contentinfo</strong> alongside <strong>aria-label=footer</strong> attributes to indicate a footer contentinfo. Alternatively, you can code your footer using the <strong>FOOTER</strong><strong> HTML&nbsp;</strong>tag which by default is treated as the contentinfo landmark by screen readers.</p>\n<pre class=\"language-html\"><code>&lt;div role=\"contentinfo\" aria-label=\"footer\"&gt;&lt;/div&gt;\n&lt;footer&gt;&lt;/footer&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "contentinfo",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "isEligibleForFalsePositiveAiValidation": true,
+        "aiValidationConfig": {
+            "modelType": "standard",
+            "mode": "FULL_PAGE_CONTEXT"
+        },
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Breadcrumbs",
+        "route": "breadcrumbs",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:59:03.000Z",
+        "modified": "2022-02-26T17:47:57.389Z",
+        "shortCode": "breadcrumbs",
+        "severity": "high",
+        "criteria": "navigation",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Breadcrumbs navigation should be tagged properly",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Breadcrumb navigation regions are essential for user orientation. If not appropriately tagged, screen reader users will not know that such an option exists on the page and will face more difficulties browsing around.",
+        "issueResolution": "<p>Add a&nbsp;<strong>role=navigation</strong> or code the breadcrumbs using the HTML <strong>NAV </strong>tag. This will indicate to screen readers that it is a navigation region. Lastly, add an <strong>aria-label=Breadcrumbs </strong>attribute so screen readers can announce that to users.</p>\n<pre class=\"language-html\"><code>&lt;nav aria-label=\"Breadcrumbs\"&gt;&lt;/nav&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "tag",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "nav",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "breadcrumbs",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Submenu Trigger Tagging",
+        "route": "submenu-trigger-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T11:05:51.000Z",
+        "modified": "2022-02-26T18:40:12.401Z",
+        "shortCode": "submenuTriggerTagging",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Menu trigger buttons/links should be tagged properly",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Menu trigger buttons/links should have `aria-haspopup=true` or `aria-haspopup=menu` attribute",
+        "issueResolution": "<p>Use the <strong>aria-haspopup</strong> attribute with value <strong>true</strong> or <strong>menu</strong> to indicate a menu trigger, and the <strong>aria-expanded=true</strong> to indicate expanded menus and <strong>aria-expanded=false</strong> to indicate collapsed menus. Make sure to switch between true and false dynamically as users interact, open and close menus.</p><p><strong>Note:</strong> the aria-expanded attribute must be placed on the link or button menu items only. Otherwise, they won't work.</p><pre class=\"language-html\"><code>&lt;button aria-haspopup=\"true\" aria-expanded=\"false\"&gt;Menu&lt;/button&gt;\n&lt;a href=\"#\" aria-haspopup=\"menu\" aria-expanded=\"false\"&gt;Menu&lt;/a&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-haspopup",
+                "suggestedFixValue": "true",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-expanded",
+                "suggestedFixValue": "false",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#name-role-value"
+        ]
+    },
+    {
+        "name": "Noticeable Focus",
+        "route": "noticeable-focus",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:12:29.000Z",
+        "modified": "2022-02-27T12:37:25.198Z",
+        "shortCode": "noticeableFocus",
+        "severity": "high",
+        "criteria": "interactive-content",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Focused elements should not be obscured by a sticky header",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "All focusable elements must have a visible focus indicator when they receive keyboard focus.",
+        "issueResolution": "<p>Add a <strong>CSS outline</strong> or other visual indicator to focusable elements to ensure the currently focused element can be visibly distinguished.</p>\n<pre class=\"language-css\"><code>/* Using CSS outline */\n*:focus-visible {\n  outline: solid 2px #0066cc;\n  outline-offset: 2px;\n}\n\n/* Using box-shadow as an alternative visual indicator */\n*:focus-visible {\n  box-shadow: 0 0 0 2px #0066cc;\n}\n\n/* Using border as a visual indicator */\n*:focus-visible {\n  border: 2px solid #0066cc;\n}</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/#focus-visible"
+        ]
+    },
+    {
+        "name": "Page Title",
+        "route": "page-title",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T11:15:42.000Z",
+        "modified": "2022-03-27T18:48:33.514Z",
+        "shortCode": "pageTitle",
+        "severity": "extreme",
+        "criteria": "document",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "The HEAD element should include a descriptive page title ",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "The document/page title is the first bit of context announced to screen reader users when a page loads. Without a properly descriptive document title, screen readers users won't know which page they've landed on.",
+        "issueResolution": "<p>Include a descriptive title tag in the head portion of your HTML, on every page of your website.</p>\n<pre class=\"language-html\"><code>&lt;head&gt;\n&lt;title&gt;I'm the page title&lt;/title&gt;\n...\n&lt;/head&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412%2C242#page-titled"
+        ]
+    },
+    {
+        "name": "Headless Tables",
+        "route": "headless-tables",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:19:58.000Z",
+        "modified": "2022-03-27T18:54:12.909Z",
+        "shortCode": "headlessTables",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Tables should include table header tags",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Screen readers can't match columns and cells without properly coded table header tags (TH). Without table headers, screen readers won't announce the table's content properly to users, leaving them unable to consume information.",
+        "issueResolution": "<p>Add a <strong>THEAD </strong>element to indicate a table heading section, and include <strong>TH&nbsp;</strong>elements for every column, describing the purpose of that table column.&nbsp;</p>\n<pre class=\"language-html\"><code>&lt;thead&gt;\n    &lt;tr&gt;\n        &lt;th&gt;Header1&lt;/th&gt;\n        &lt;th&gt;Header2&lt;/th&gt;\n        &lt;th&gt;Header3&lt;/th&gt;\n    &lt;/tr&gt;\n&lt;thead&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Empty Links",
+        "route": "empty-links",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T11:03:47.000Z",
+        "modified": "2022-03-27T18:47:52.802Z",
+        "shortCode": "emptyLinks",
+        "severity": "high",
+        "criteria": "clickables",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Empty links should indicate their location or excluded from assistive technology",
+        "addSROnlyCSS": true,
+        "saveSuccesses": false,
+        "issueDescription": "Screen reader users need to figure out a link's destination based on the text or a coded label. This is because they interact with one element at a time and don't see visual cues that provide more context.",
+        "issueResolution": "<p>Use an aria-label or the screen-reader-only text technique to provide links with extra context regarding &nbsp;their destination and functionality like in the example below:</p>\n<pre class=\"language-html\"><code>&lt;a href=\"....\"&gt;&lt;span class=\"sr-only\"&gt;Blog article: 10 different ways to...&lt;/span&gt;&lt;/a&gt;\n&lt;a href=\"....\" aria-label=\"Blog article: 10 different ways to...\"&gt;&lt;/a&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "isEligibleForFalsePositiveAiValidation": true,
+        "aiValidationConfig": {
+            "modelType": "standard",
+            "mode": "ELEMENT_CONTEXT"
+        },
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#name-role-value"
+        ]
+    },
+    {
+        "name": "Color Contrast",
+        "route": "color-contrast",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:07:54.000Z",
+        "modified": "2022-03-27T18:50:24.818Z",
+        "shortCode": "colorContrast",
+        "confidence": "low",
+        "severity": "medium",
+        "criteria": "readability",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "The color contrast ratio between text and its background should provide a readable experience",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "The color contrast between the foreground and the background elements needs to meet a ratio of at least 4.5:1 for standard text. For large text above 18pt (24px) font size, a lower ratio of 3:1 can be met, but it is recommended to remain with 4:5:1 in any case. A background element that is not directly in the hierarchy of the text element that has the correct contrast, may cause what appears to be a false positive. According to WCAG, this is incorrect, and not a false positive because people using assistive technologies may change the font and background colors to improve readability, which isn't possible if the background is not part of the text element's hierarchy.",
+        "issueResolution": "<p>Work with the website's designers to choose colors that properly meet the minimum contrast ratio requirements. To check color contrast with different potential colors, use Webaim's contrast checker: <a href=\"https://webaim.org/resources/contrastchecker\" target=\"_blank\" rel=\"noopener\">https://webaim.org/resources/contrastchecker</a></p><p>If using floating backgrounds, ensure they are part of the hierarchy of the text element to allow users with assistive technologies to adjust colors for better readability.</p>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=144%2C1412%2C211%2C143#contrast-minimum"
+        ]
+    },
+    {
+        "name": "Sale Prices",
+        "route": "sale-prices",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T21:53:24.000Z",
+        "modified": "2022-02-25T21:02:42.658Z",
+        "shortCode": "salePrices",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "sale-price-discernible"
+        ],
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Original and discounted prices should be indicated to assistive technology",
+        "addSROnlyCSS": true,
+        "saveSuccesses": false,
+        "issueDescription": "Discounted prices often appear next to the original and distinguished with visual cues like strikethroughs or color changes. Both prices must also be conveyed by screen readers in a way that enables users to differentiate between the values, ensuring they can understand when a discount is applied.",
+        "issueResolution": "<p>Add visually hidden text that explicitly identifies each value as the original price or the discounted price.</p><pre class=\"language-html\"><code>&lt;div&gt;$100 &lt;span class=\"sr-only\"&gt;Original price&lt;/span&gt;&lt;/div&gt;\n&lt;div&gt;$75 &lt;span class=\"sr-only\"&gt;Discounted price&lt;/span&gt;&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "srOnly",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "Original price",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"
+        ]
+    },
+    {
+        "name": "Field Required",
+        "route": "field-required",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T09:59:07.000Z",
+        "modified": "2022-02-26T11:51:16.780Z",
+        "shortCode": "fieldRequired",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "required-form-field-aria-required"
+        ],
+        "severity": "high",
+        "criteria": "forms",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Mandatory form fields should indicate that they are required",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "If a field is marked as required only through visual cues, but lacks the required attribute or aria-required=\"true\", screen readers will not announce it as mandatory. As a result, users may experience unnecessary delays or confusion when trying to submit the form.",
+        "issueResolution": "<p>Add the&nbsp;<strong>aria-required=true</strong> attribute to indicate to screen readers that a field is required and the form won't submit without it.</p>\n<pre class=\"language-html\"><code>&lt;input aria-required=\"true\"&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-required",
+                "suggestedFixValue": "true",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131%2C411#error-suggestion"
+        ]
+    },
+    {
+        "name": "Submenu State",
+        "route": "submenu-state",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:56:28.000Z",
+        "modified": "2022-02-26T17:22:24.436Z",
+        "shortCode": "submenuState",
+        "severity": "extreme",
+        "criteria": "interactive-content",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Triggers that expand additional content should expose their state to assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "When components such as accordions or navigation menus do not expose their state, screen reader users may not realize that additional content can be revealed or know whether it is currently visible.",
+        "issueResolution": "<p>When a button is a menu trigger, you should connect it to the menu it toggles using the <strong>aria-controls</strong> attribute on the button, where the value is the <strong>id</strong> of the menu. Use the <strong>aria-expanded</strong> attribute to indicate whether the menu controlled by a menu-trigger button is expanded or collapsed (if it is visible or not). Set the value dynamically to <strong>true</strong> when the menu is visible and <strong>false</strong> when it is not.</p><p><strong>Note:</strong> the aria-expanded attribute must be placed on the link or button menu items only. Otherwise, they won't work.</p><pre class=\"language-html\"><code>&lt;button aria-controls=\"menu1\" aria-expanded=\"false\" aria-haspopup=\"true\"&gt;Menu&lt;/button&gt;\n&lt;div id=\"menu1\"&gt;...&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-controls",
+                "suggestedFixValue": "",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-expanded",
+                "suggestedFixValue": "false",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#name-role-value"
+        ]
+    },
+    {
+        "name": "Title Misuse",
+        "route": "title-misuse",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T11:59:22.000Z",
+        "modified": "2022-02-26T20:16:27.769Z",
+        "shortCode": "titleMisuse",
+        "severity": "low",
+        "criteria": "general",
+        "WCAGLevel": "none",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "The title attribute should not be the only method used to provide information",
+        "addSROnlyCSS": true,
+        "saveSuccesses": true,
+        "issueDescription": "The title attribute is announced inconsistently across screen readers and browsers, making it unreliable for labeling interactive controls. Because many users may never hear the content, reliance on the attribute risks loss of information. Instead, it should be used to provide extra help text in addition to a valid label.",
+        "issueResolution": "<p>Make sure that the <strong>title</strong> attribute is not the only means of providing a label by assigning an <strong>aria-label</strong> or <strong>aria-labelledby</strong> attribute to the interactive control.</p><pre class=\"language-html\"><code>&lt;button title=\"Submit form\" aria-label=\"Submit form\"&gt;Submit&lt;/button&gt;\n&lt;input type=\"text\" title=\"Enter your name\" aria-label=\"Enter your name\"&gt;\n&lt;div title=\"Navigation menu\" aria-labelledby=\"nav-label\"&gt;\n  &lt;span id=\"nav-label\"&gt;Navigation menu&lt;/span&gt;\n&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "{suggestion}",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Live Carousels",
+        "route": "live-carousels",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T10:48:44.000Z",
+        "modified": "2022-03-27T17:26:20.718Z",
+        "shortCode": "liveCarousels",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "carousel-aria-live"
+        ],
+        "severity": "extreme",
+        "criteria": "interactive-content",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Carousels should not be tagged as live regions",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "When carousels are tagged as live regions, screen readers will interrupt reading and announce every slide change, even when the user isn't interacting with the carousel or is in another section entirely.",
+        "issueResolution": "<p>Remove the <strong>aria-live=true </strong>attribute from the carousel itself and all of its slides.</p>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "aria-live",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Broken Nav Items",
+        "route": "broken-nav-items",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T11:01:05.000Z",
+        "modified": "2022-02-26T18:43:43.144Z",
+        "shortCode": "brokenNavItems",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "menu-item-avoid"
+        ],
+        "severity": "high",
+        "criteria": "interactive-content",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Avoid using role=\"menuitem\" for web navigation links",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "In most cases, using ARIA menu roles within a web page can negatively impact screen reader users, especially those using JAWS. role=\"menuitem\" should be used for menu items in menu types that function like those found in desktop applications.",
+        "issueResolution": "<p>Use standard lists with links and buttons (or custom buttons with <strong>role=\"button\"</strong>) and remove <strong>role=\"menuitem\"</strong>.</p>\n<pre class=\"language-html\"><code>&lt;!-- Before: using role=\"menuitem\" --&gt;\n&lt;ul role=\"menu\"&gt;\n  &lt;li role=\"menuitem\"&gt;Home&lt;/li&gt;\n  &lt;li role=\"menuitem\"&gt;About&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;!-- After: standard list with links --&gt;\n&lt;ul&gt;\n  &lt;li&gt;&lt;a href=\"/home\"&gt;Home&lt;/a&gt;&lt;/li&gt;\n  &lt;li&gt;&lt;a href=\"/about\"&gt;About&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;!-- After: standard list with buttons --&gt;\n&lt;ul&gt;\n  &lt;li&gt;&lt;button&gt;Action 1&lt;/button&gt;&lt;/li&gt;\n  &lt;li&gt;&lt;button&gt;Action 2&lt;/button&gt;&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;!-- After: standard list with custom buttons (role=\"button\") --&gt;\n&lt;ul&gt;\n  &lt;li&gt;&lt;span role=\"button\" tabindex=\"0\"&gt;Custom Button&lt;/span&gt;&lt;/li&gt;\n&lt;/ul&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "role",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Carousel Labeling",
+        "route": "carousel-labeling",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T10:57:30.000Z",
+        "modified": "2022-03-27T17:28:29.937Z",
+        "shortCode": "carouselLabeling",
+        "confidence": "low",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "carousel-mismatch",
+            "carousel-discernible",
+            "carousel-redundant-discernible-text"
+        ],
+        "severity": "high",
+        "criteria": "carousels",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Carousels should be tagged and labeled properly",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Unlabeled carousel areas are difficult for screen reader users because content gets hidden and shown unexpectedly. This can cause screen readers to read, stop, and start to read again something else entirely. If tagged properly, this behavior is expected.",
+        "issueResolution": "<p>Use the <strong>ARIA landmark </strong>technique to tag the carousel as a region, alongside an <strong>\"aria-label\"</strong> that equals <strong>\"carousel\".</strong> Using both of these attributes, assistive technology users will understand that this is a carousel region. This will also help users identify that buttons and controls within the region (like next, previous, or pause) are associated with controlling the carousel functionality.</p>\n<p>You can also include extra content for the carousel in the aria-label attribute as seen in the example below:&nbsp;</p>\n<pre class=\"language-html\"><code>&lt;div class=\"carousel\" role=\"region\" aria-label=\"Featured Products Carousel\"&gt;&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "region",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "carousel",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Carousel Pagination",
+        "route": "carousel-pagination",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T10:58:26.000Z",
+        "modified": "2022-03-27T17:28:53.715Z",
+        "shortCode": "carouselPagination",
+        "confidence": "low",
+        "severity": "high",
+        "criteria": "carousels",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Carousel pagination buttons should be tagged and labled for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Carousel pagination buttons, which are usually tiny dots indicating a slide option, are often used for operating carousels. However, if those aren't tagged and coded correctly for screen-readers, blind users won't be able to operate the carousel.",
+        "issueResolution": "<p>For pagination buttons to be accessible, they should either be built as native buttons or use the role=button attribute. They should also include a screen-reader-only text or an \"aria-label\" to indicate the slide number they activate.</p>\n<pre class=\"language-html\"><code>&lt;button type=\"button\" aria-label=\"Carousel slide 1/2/3\"&gt;●&lt;/button&gt;\n&lt;button type=\"button\"&gt;&lt;span class=\"sr-only\"&gt;Carousel slide 1/2/3&lt;/span&gt;●&lt;/button&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "button",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "Carousel slide 1/2/3/4/5...",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        ]
+    },
+    {
+        "name": "Viewport Scalability",
+        "route": "viewport-scalability",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T11:17:48.000Z",
+        "modified": "2022-03-27T18:49:01.440Z",
+        "shortCode": "viewportScalability",
+        "severity": "extreme",
+        "criteria": "document",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Meta viewport tag should alow user scaling of at least 200%",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "The page needs to enable pinch-zoom and software Zoom for assistive technology - at least 200% the basic size without breaking the layout or clipping the content.",
+        "issueResolution": "<p>The meta viewport enables the Zoom behavior by default if we provide correct values. Make sure the user-scalable portion of the attribute is set to yes, and that the maximum-scale portion is at least 2 (200%). Ideally, set it to 5.</p>\n<pre class=\"language-html\"><code>&lt;meta name=\"viewport\" content=\"width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0\"&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C242%2C311%2C412%2C144#resize-text"
+        ]
+    },
+    {
+        "name": "Captcha",
+        "route": "captcha",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T09:57:56.000Z",
+        "modified": "2022-02-26T00:52:23.181Z",
+        "shortCode": "captcha",
+        "severity": "extreme",
+        "criteria": "general",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "CAPTCHA used in authentication should not involve cognitive function tests",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "With the exception of challenges that require recognition of  objects that are generally familiar to users, CAPTCHA used during authentication should not require users to perform cognitive function tests, such as recalling site-specific passwords or solving a puzzle.",
+        "issueResolution": "<p>Replace all non-standard Captcha fields with <strong>Google Recaptcha</strong> (or other Accessible Provider) which is fully accessible for screen readers and assistive technology by default. Learn more about Google Recaptcha here: <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\" rel=\"noopener\">https://www.google.com/recaptcha/about/</a></p>",
+        "suggestedFix": [],
+        "engineRules": [
+            "captcha-accessible-provider-v2.2"
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#non-text-content"
+        ]
+    },
+    {
+        "name": "Broken Aria Labels",
+        "route": "aria-label-misuse",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:00:36.000Z",
+        "modified": "2022-02-26T20:28:04.291Z",
+        "shortCode": "brokenAriaLabels",
+        "severity": "extreme",
+        "criteria": "aria",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Aria labels should not override or replace visible text",
+        "addSROnlyCSS": true,
+        "saveSuccesses": false,
+        "issueDescription": "Aria labels should describe elements that don't have proper text, like icons and field labels. It should not be used to override element texts. Screen reader users need to receive the exact text as visually on the screen, with more context if it is ambiguous. An exception applies to landmarks such as nav or other landmarks: here, ARIA labels can provide additional context or clarification.",
+        "issueResolution": "<p>Remove the <strong>aria-label.&nbsp;</strong>If you need to add context for screen reader users only because of the ambiguity of the text, use <strong>the screen-reader-only</strong> technique.</p>\n<pre class=\"language-html\"><code>&lt;span class=\"sr-only\"&gt;Additional context&lt;/span&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html"
+        ]
+    },
+    {
+        "name": "Carousel Pausing",
+        "route": "carousel-pausing",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T10:55:35.000Z",
+        "modified": "2022-03-27T17:27:03.906Z",
+        "shortCode": "carouselPausing",
+        "severity": "medium",
+        "criteria": "carousels",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Carousel should include a pause button",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Carousels without a properly labeled button to allow users to pause may cause interference with assistive technology and loss of orientation for keyboard navigation users.",
+        "issueResolution": "<p>Include a keyboard-navigable, labeled button that enables users to pause the carousel. If you do not want the button to be visible but only available for screen readers and keyboard users, you can hide it using the CSS opacity attribute (set to 0), and on focus, set the opacity to 1 to make it visible.</p>\n<pre class=\"language-html\"><code>&lt;button type=\"button\" class=\"pause-button\"&gt;Pause&lt;/button&gt;\n&lt;style&gt;\n.pause-button {\n    opacity: 0;\n}\n\n.pause-button:focus-visible {\n    opacity: 1;\n}\n&lt;/style&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/#pause-stop-hide"
+        ]
+    },
+    {
+        "name": "Tabs Tagging",
+        "route": "tabs-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T22:00:42.000Z",
+        "modified": "2022-02-26T00:41:15.779Z",
+        "shortCode": "tabsTagging",
+        "isAutoResolvable": false,
+        "severity": "high",
+        "criteria": "context",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Tabs should be tagged properly for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Tabs are a very popular way to provide information on demand. However, If tabs aren't adequately tagged and labeled, screen reader users will most likely miss the entire content hidden within the inactive tabs, never knowing additional information exists.",
+        "issueResolution": "<p>Add <strong>role=tab</strong> to the buttons which trigger the tab functionality.</p>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "tab",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        ]
+    },
+    {
+        "name": "Tab Panel Tagging",
+        "route": "tab-panel-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T22:01:37.000Z",
+        "modified": "2022-02-26T00:48:20.411Z",
+        "shortCode": "tabPanelTagging",
+        "isAutoResolvable": false,
+        "severity": "high",
+        "criteria": "context",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Tab panels should be tagged for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Tagging the tab triggers is essential but isn't enough. The tag panels should also be tagged appropriately to provide context. Otherwise, screen reader users won't know if the content being read is part of the tab functionality or just random text on the page.",
+        "issueResolution": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "tabpanel",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Custom Select Field",
+        "route": "custom-select-field",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:01:46.000Z",
+        "modified": "2022-02-26T15:51:47.328Z",
+        "shortCode": "customSelectField",
+        "severity": "high",
+        "criteria": "forms",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Custom select fields should be made accessible",
+        "addSROnlyCSS": true,
+        "saveSuccesses": true,
+        "issueDescription": "Screen readers have built-in mechanisms to handle select fields. By default, assistive technology does not support custom select fields, and using those may prevent screen reader users from interacting with the fields. ",
+        "issueResolution": "<p>Create a standard select field with all the options and make it available only for screen readers using the <strong>screen reader only </strong>technique. Then, hide the custom select box from screen readers using&nbsp;<strong>aria-hidden=true.</strong> Don't forget to add the same functionality to this hidden field as your custom one.</p>\n<p>&nbsp;Using this method, screen readers will not \"see\" the custom field but will see the standard one and interact with it regularly.</p>\n<pre class=\"language-html\"><code>&lt;div class=\"custom-select\" aria-hidden=\"true\"&gt;\n    &lt;ul&gt;\n        &lt;li&gt;Option 1&lt;/li&gt;\n        &lt;li&gt;Option 2&lt;/li&gt;\n        &lt;li&gt;Option 3&lt;/li&gt;\n    &lt;/ul&gt;\n&lt;/div&gt;\n&lt;select class=\"sr-only\"&gt;\n    &lt;option&gt;Option 1&lt;/option&gt;\n    &lt;option&gt;Option 2&lt;/option&gt;\n    &lt;option&gt;Option 3&lt;/option&gt;\n&lt;/select&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"
+        ]
+    },
+    {
+        "name": "Submenu Operability",
+        "route": "submenu-operability",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:55:50.000Z",
+        "modified": "2022-02-26T17:16:44.430Z",
+        "shortCode": "submenuOperability",
+        "severity": "high",
+        "criteria": "navigation",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Sub-menu should open and close using the Enter key",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Clicking Enter when a menu item with a sub-menu is focused should open the sub-menu. A second click should close it. If sub-menus are not operable using the keyboard, screen reader and keyboard users may miss a significant part of the website.",
+        "issueResolution": "<p>Enable opening and closing sub-menus using the Enter key. If the menu item is a link, disable the link's behavior. Otherwise, rather than opening the menu, users will be redirected). However, make sure there's a link within the sub-menu that will take users to the designated menu item link that has been disabled. This menu item can be a <strong>screen-reader-only</strong> link.</p>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211#keyboard-accessible"
+        ]
+    },
+    {
+        "name": "Marquee",
+        "route": "marquee",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:09:22.000Z",
+        "modified": "2022-02-26T20:49:43.380Z",
+        "shortCode": "marquee",
+        "severity": "low",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "<marquee> elements are deprecated",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "<marquee> elements are obsolete and should not be used. They are not part of any HTML or WAI-ARIA specification. They are not responsive or supported by any browsers.",
+        "issueResolution": "<p>Remove the <strong>marquee</strong> element and use a different method of animating text like carousels or <strong>CSS transitions and animations.</strong></p>",
+        "suggestedFix": [],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Keyboard Hoverables",
+        "route": "keyboard-hoverables",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:12:53.000Z",
+        "modified": "2022-02-27T12:49:50.748Z",
+        "shortCode": "keyboardHoverables",
+        "severity": "high",
+        "criteria": "keyboard",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Mouse hoverables should receive keyboard focus no function the same as with the mouse",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Elements that appear or change behavior on mouse hover should also appear on keyboard focus and provide the same functionality. Otherwise, keyboard users will not be able to interact with those elements.",
+        "issueResolution": "<p>As a general rule of thumb, it is best practice to avoid providing functionality only on mouse hover. The biggest reason for that is touch screens like mobile devices and tablets (and many laptops). Touch input does not include a hover functionality because the interaction isn't with a mouse. This is also true for accessibility - keyboards and assistive technology do not have a \"hover\" functionality.</p>\n<p>If you still wish to include hover functionality, in order to make it accessible, you'll need to use JavaScript rather than CSS to make it work. Using JavaScript, add a <strong>focusing </strong>event to the hoverable element to catch when it is being focused using the keyboard (don't forget to give it <strong>tabindex=0</strong>). Then, add a class, and make the hover CSS apply to that class as well. Lastly, add a <strong>focusout </strong>event to remove the class when the element is no longer focused.</p>\n<p>You can copy and paste the below JavaScript code, but make sure to include your actual selectors instead of the <strong>\".your-hoverable-selector\"</strong> and&nbsp;<strong>\".your-hoverable-class\" </strong>texts.</p>\n<pre class=\"language-javascript\"><code>document.addEventListener('focusin', e =&gt; {\n   if( e.target.closest('.your-hoverable-selector') ) e.target.classList.add('.your-hoverable-class'); \n});\n\ndocument.addEventListener('focusout', e =&gt; {\n   if( ! e.target.matches('.your-hoverable-selector') ||  ) e.target.parentElement.closest('.your-hoverable-selector') ) return;\n   e.target.classList.remove('.your-hoverable-class');\n});</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html"
+        ]
+    },
+    {
+        "name": "Carousel Arrows",
+        "route": "carousel-arrows",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T10:49:56.000Z",
+        "modified": "2022-03-27T17:26:43.887Z",
+        "shortCode": "carouselArrows",
+        "confidence": "low",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "carousel-previous-slide-discernible",
+            "carousel-next-slide-discernible"
+        ],
+        "severity": "high",
+        "criteria": "carousels",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Carousel navigation arrows should be labled for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Carousel arrow buttons (next/previous slides) are essential for operating carousels. By design, carousels are difficult for assistive technology to handle. If the navigation arrows aren't accessible, carousels may be impossible for blind users to operate.",
+        "issueResolution": "<p>Build the arrow buttons using a <strong>button </strong>tag. Alternatively, use the ARIA-role (<strong>role=button</strong>) attribute to mark those as buttons for assistive technology. Additionally, include an <strong>aria-label</strong> or a screen-reader-only text describing the functionality of the button.</p>\n<pre class=\"language-html\"><code>&lt;button type=\"button\" aria-label=\"Next/Previous\"&gt;... YOUR ARROW ICON&lt;/button&gt;\n&lt;button type=\"button\"&gt;&lt;span class=\"sr-only\"&gt;Next/Previous&lt;/span&gt;... YOUR ARROW ICON&lt;/button&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "button",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "srOnly",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "{suggestion}",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html"
+        ]
+    },
+    {
+        "name": "Alt Text",
+        "route": "alt-text",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:09:24.000Z",
+        "modified": "2022-03-27T18:50:58.772Z",
+        "shortCode": "altText",
+        "severity": "extreme",
+        "criteria": "graphics",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Functional images should have a text alternative",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "Images require a text alternative when the image conveys meaningful content or serves a functional purpose. If the image is decorative, it must be hidden from assistive technology.",
+        "issueResolution": "<p>If the image is meaningful, assign a text alternative with a description of the image content using the <strong>alt</strong> attribute for image elements, or <strong>aria-label</strong> for elements with <strong>role=\"img\"</strong>. If the image is decorative, provide an empty <strong>alt</strong> attribute for image elements, or <strong>role=\"presentation\"</strong> for elements with <strong>role=\"img\"</strong>.</p>\n<pre class=\"language-html\"><code>&lt;!-- Meaningful image with alt attribute --&gt;\n&lt;img src=\"product.jpg\" alt=\"Red leather handbag with gold hardware\"&gt;\n\n&lt;!-- Meaningful element with role=\"img\" using aria-label --&gt;\n&lt;div role=\"img\" aria-label=\"Company logo featuring a mountain silhouette\"&gt;\n  &lt;svg&gt;...&lt;/svg&gt;\n&lt;/div&gt;\n\n&lt;!-- Decorative image with empty alt attribute --&gt;\n&lt;img src=\"decorative-border.png\" alt=\"\"&gt;\n\n&lt;!-- Decorative element with role=\"img\" using role=\"presentation\" --&gt;\n&lt;div role=\"presentation\"&gt;\n  &lt;svg&gt;...&lt;/svg&gt;\n&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "alt",
+                "suggestedFixValue": "{suggestion}",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#non-text-content"
+        ]
+    },
+    {
+        "name": "Row Table Headers",
+        "route": "row-table-headers",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:22:45.000Z",
+        "modified": "2022-02-25T20:06:44.442Z",
+        "shortCode": "rowTableHeaders",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "table-row-header"
+        ],
+        "severity": "extreme",
+        "criteria": "tables",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Table row headers should be tagged for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "If a table row header is not marked up with the correct role or scope, screen reader users cannot determine which header applies to each cell.",
+        "issueResolution": "<p>Use <code>&lt;th scope=\"row\"&gt;</code> or assign <strong>role=\"rowheader\"</strong> when building custom tables. Make sure each data cell is programmatically associated with the correct header so relationships are clear to assistive technology.</p><pre class=\"language-html\"><code>&lt;table&gt;\n    &lt;tr&gt;\n        &lt;th scope=\"row\"&gt;Row header&lt;/th&gt;\n        &lt;td&gt;Cell&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n        &lt;td role=\"rowheader\"&gt;Row header&lt;/td&gt;\n        &lt;td&gt;Cell&lt;/td&gt;\n    &lt;/tr&gt;\n&lt;/table&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "rowheader",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Popup Tagging",
+        "route": "popup-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T22:02:11.000Z",
+        "modified": "2022-03-08T13:29:24.466Z",
+        "shortCode": "popupTagging",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "dialog-modal-mismatch"
+        ],
+        "severity": "extreme",
+        "criteria": "interactive-content",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Modal dialogs should be tagged for assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Content behind active modal dialogs should not be navigable, otherwise screen reader users may still encounter hidden or unrelated content, disrupting the intended workflow and making it harder to focus on the dialog’s purpose.",
+        "issueResolution": "<p>Add <strong>aria-modal=\"true\"</strong> alongside <strong>role=\"dialog\"</strong> to indicate to screen readers that the dialog is modal and that content outside of it should be treated as inactive. Screen readers will recognize this and adjust their behavior to keep the user's focus inside the dialog, providing a clearer and more predictable experience.</p><pre class=\"language-html\"><code>&lt;div role=\"dialog\" aria-modal=\"true\"&gt;...&lt;/div&gt;\n\n&lt;dialog aria-modal=\"true\"&gt;...&lt;/dialog&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-modal",
+                "suggestedFixValue": "true",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "dialog",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Search Form Tagging",
+        "route": "search-form-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:02:05.000Z",
+        "modified": "2022-02-26T12:17:25.099Z",
+        "shortCode": "searchFormTagging",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "search-form-mismatch"
+        ],
+        "severity": "medium",
+        "criteria": "landmarks",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "A search form should be tagged as a search landmark",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Screen reader users rely on landmarks to quickly access important regions of a page. Defining a form as a search landmark ensures that users can quickly recognize and navigate to the search form.",
+        "issueResolution": "<p>Enclose the search form in a <code>&lt;search&gt;</code> element or assign <strong>role=\"search\"</strong> to the <code>&lt;form&gt;</code> element.</p><pre class=\"language-html\"><code>&lt;search&gt;\n    &lt;form&gt;\n        &lt;input type=\"search\" /&gt;\n    &lt;/form&gt;\n&lt;/search&gt;\n\n&lt;form role=\"search\"&gt;\n    &lt;input type=\"search\" /&gt;\n&lt;/form&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "search",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#info-and-relationships"
+        ]
+    },
+    {
+        "name": "Role Applications",
+        "route": "role-applications",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:06:52.000Z",
+        "modified": "2022-02-26T20:46:12.159Z",
+        "shortCode": "roleApplications",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "no-role-application"
+        ],
+        "severity": "extreme",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Avoid using role=\"application\"",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Using role=\"application\" is generally discouraged because it disables standard screen reader modes and forces users into an application mode. This removes familiar navigation shortcuts, such as heading or landmark navigation, and requires them to interact in ways they may not expect.",
+        "issueResolution": "<p>Remove <strong>role=\"application\"</strong> from the failing element.</p><pre class=\"language-html\"><code>&lt;!-- Before --&gt;\n&lt;div role=\"application\"&gt;Content&lt;/div&gt;\n\n&lt;!-- After --&gt;\n&lt;div&gt;Content&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "role",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Fake Hidden Interactive",
+        "route": "fake-hidden-interactive",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:18:26.000Z",
+        "modified": "2022-02-27T17:30:02.293Z",
+        "shortCode": "fakeHiddenInteractive",
+        "severity": "extreme",
+        "criteria": "keyboard",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Visually hidden elements should not receive keyboard focus",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Hiding elements on screen using any other method than display=none or visibility=hidden keeps them keyboard-navigable. Therefore when users navigate, they'll focus on those elements but won't see anything focused on-page and lose orientation.",
+        "issueResolution": "<p>If you are hiding elements using <strong>opacity, size, positioning,</strong> or any other CSS method other than <strong>display=none or visibility=hidden,</strong> add all interactive elements inside this \"hidden\" element <strong>tabindex=-1</strong>. This includes links, buttons, and form fields.</p>\n<p>When this \"hidden\" element becomes visible on screen, remove the <strong>tabindex=-1</strong> for any native links, buttons, and form fields in it (those elements are keyboard navigable by default), and add <strong>tabindex=0</strong> to interactive elements that aren't coded as links or buttons link <strong>SPAN, DIV, I</strong> and other interactive elements bound by JS.</p>\n<pre class=\"language-html\"><code>&lt;a href=\"...\" tabindex=\"-1\"&gt;This link will not be keyboard navigable&lt;/a&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "tabindex",
+                "suggestedFixValue": "-1",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html"
+        ]
+    },
+    {
+        "name": "Ambiguous Links",
+        "route": "ambiguous-links",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T11:05:38.000Z",
+        "modified": "2022-03-27T18:48:17.785Z",
+        "shortCode": "ambiguousLinks",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Ambiguous links should have additional descriptions for screen readers.",
+        "addSROnlyCSS": true,
+        "saveSuccesses": true,
+        "issueDescription": "Ambiguous links like \"Learn More\", \"Shop Now\" and \"Start Here\" are often used as a call to action. However, screen-reader users, while using link navigation, do not interact with content above or below the link and therefore don't have the same context as to what they will learn more about.",
+        "issueResolution": "<p>Add a screen-reader only text which gives additional context to the destination of the link such as the example below:</p>\n<pre class=\"language-html\"><code>&lt;a href=\"...\"&gt;Shop Now &lt;span class=\"sr-only\"&gt;New summer collection&lt;/span&gt;&lt;/a&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "srOnly",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "Link destination description",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211#link-purpose-in-context"
+        ]
+    },
+    {
+        "name": "Decorative Content",
+        "route": "decorative-content",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:08:39.000Z",
+        "modified": "2022-03-27T18:50:37.010Z",
+        "shortCode": "decorativeContent",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "icon-discernible"
+        ],
+        "severity": "extreme",
+        "criteria": "graphics",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Meaningful icons should have a label, while decorative icons should be hidden",
+        "addSROnlyCSS": true,
+        "saveSuccesses": false,
+        "issueDescription": "Smaller graphics used as decorative or complementary elements, such as icons, and that do not provide additional information will often add unnecessary clutter to a screen reader user's browsing experience.",
+        "issueResolution": "<p>If the image is meaningful, assign a text alternative with a description of the image content using the <strong>alt</strong> attribute for image elements, or <strong>aria-label</strong> for elements with <strong>role=\"img\"</strong>. If the image is decorative, provide an empty <strong>alt</strong> attribute for image elements, or <strong>role=\"presentation\"</strong> for elements with <strong>role=\"img\"</strong>.</p>\n<pre class=\"language-html\"><code>&lt;!-- Meaningful image --&gt;\n&lt;img src=\"icon.png\" alt=\"Search\"&gt;\n&lt;svg role=\"img\" aria-label=\"Search\"&gt;&lt;/svg&gt;\n\n&lt;!-- Decorative image --&gt;\n&lt;img src=\"decoration.png\" alt=\"\"&gt;\n&lt;svg role=\"presentation\"&gt;&lt;/svg&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "presentation",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C412#non-text-content"
+        ]
+    },
+    {
+        "name": "Figure Setup",
+        "route": "figure-setup",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:10:22.000Z",
+        "modified": "2022-03-27T18:51:14.940Z",
+        "shortCode": "figureSetup",
+        "severity": "low",
+        "criteria": "general",
+        "WCAGLevel": "none",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Figure elements should receive text description or lose figure role",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Figure elements are often incorrectly used to display images on the screen. Incorrectly using the figure tag, without providing a proper figcaption, adds unnecessary clutter to the screen reader user's experience.",
+        "issueResolution": "<p>Standard images should be coded regularly without having a figure parent element. The figure tag should only be used for images you wish to provide additional visual descriptions for, like the date and time a photo was taken or other metadata.</p>\n<p>To make a figure tag non-cluttering for screen-readers, add the role=presentation attribute to replace it with another element like DIV. Alternatively, if you did intend to use the figure tag, make sure to add a figcaption tag with the additional metadata.</p>\n<pre class=\"language-html\"><code>&lt;figure role=\"presentation\"&gt;&lt;img src=\"...\" alt=\"Image alt\"&gt;&lt;/figure&gt;\n&lt;figure&gt;&lt;img src=\"...\" alt=\"Image alt\"&gt;&lt;figcaption&gt;January 2020, 10 AM, Milano Italy.&lt;/figcaption&gt;&lt;/figure&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "presentation",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Field Label",
+        "route": "field-label",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T09:58:41.000Z",
+        "modified": "2022-02-26T11:45:31.202Z",
+        "shortCode": "fieldLabel",
+        "severity": "extreme",
+        "criteria": "forms",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Form fields must include a descriptive label",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Screen readers rely on properly coded, associated labels to identify a field's purpose and read it to the user. Without properly coding the connection between the label and the input, blind users won't be able to interact with the form.",
+        "issueResolution": "<p>Provide a&nbsp;<strong>LABEL</strong> tag and associate it to the field using the&nbsp;<strong>for </strong>and the&nbsp;<strong>id</strong> attributes like in the example below. Alternatively, you can put an <strong>aria-label</strong> attribute directly on the field without including an associated label tag.</p>\n<pre class=\"language-html\"><code>&lt;div&gt;\n    &lt;label for=\"field-id\"&gt;Field label&lt;/label&gt;\n    &lt;input id=\"field-id\"&gt;\n&lt;/div&gt;\n--------- OR ---------\n&lt;input aria-label=\"Field label\"&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "{suggestion}",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"
+        ]
+    },
+    {
+        "name": "Field Validations",
+        "route": "field-validations",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:03:59.000Z",
+        "modified": "2022-02-26T12:31:06.193Z",
+        "shortCode": "fieldValidations",
+        "severity": "high",
+        "criteria": "forms",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Fields must indicate validation errors to assistive technology ",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Screen reader users rely on properly coded field validation status and associated validation messages. Otherwise, users would have to browse around and try to pick up clues on the page as to why their submission attempt did not work.",
+        "issueResolution": "<p>Include the&nbsp;<strong>aria-invalid</strong><strong>=true</strong> attribute when the field validation shows on the page. Screen readers will pick that up and inform the user that this field is invalid. Make sure to change the <strong>aria-invalid</strong> to&nbsp;<strong>false</strong> when the field value does become valid.</p>\n<p>To associate validation messages with fields, use the <strong>aria-describedby</strong> attribute and give it the field's ID for which it provides a validation message. Alternatively, put the validation message inside the associated field <strong>LABEL,</strong> causing screen readers to announce it on interaction.</p>\n<pre class=\"language-html\"><code>&lt;input aria-labeledby=\"phone-validation\" aria-label=\"Phone number\"&gt;\n&lt;span id=\"phone-validation\"&gt;Please enter exactly 10 digits&lt;/span&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-invalid",
+                "suggestedFixValue": "true",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-describedby",
+                "suggestedFixValue": "#error-message-element-id",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131%2C411#error-suggestion"
+        ]
+    },
+    {
+        "name": "Field Validation Focus",
+        "route": "field-validation-focus",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:09:45.000Z",
+        "modified": "2022-02-26T12:35:05.232Z",
+        "shortCode": "fieldValidationFocus",
+        "severity": "high",
+        "criteria": "forms",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Keyboard focus should move into the invalid field on submission",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "When field validations appear, if the keyboard focus doesn't automatically land on an incorrect field, it is often difficult for screen reader and keyboard users to identify and navigate to the error message and start fixing the form from there.",
+        "issueResolution": "<p>Automatically move the keyboard focus into the first errored field on unsuccessful form submission.</p>\n<pre class=\"language-javascript\"><code>document.querySelector('#field-id').focus()</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html"
+        ]
+    },
+    {
+        "name": "Submenu Tagging",
+        "route": "submenu-tagging",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:57:07.000Z",
+        "modified": "2022-02-26T17:38:59.193Z",
+        "shortCode": "submenuTagging",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "navigation-submenu-region"
+        ],
+        "severity": "low",
+        "criteria": "landmarks",
+        "WCAGLevel": "none",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Tagging submenus is recommended",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Complex menu structures often contain multiple groups of links that can feel like undifferentiated page content to screen reader users. Assigning role=\"region\" with a label makes each submenu a distinct, named section, clarifying its relationship to the trigger and improving orientation.",
+        "issueResolution": "<p>Assign <strong>role=\"region\"</strong> to each menu panel so screen reader users can distinguish submenus from surrounding page content. Adding a label (e.g., with <strong>aria-labelledby</strong>) helps users quickly identify each panel within a complex menu structure.</p><pre class=\"language-html\"><code>&lt;nav&gt;\n    &lt;ul&gt;\n        &lt;li&gt;\n            &lt;a href=\"...\"&gt;Menu item&lt;/a&gt;\n            &lt;div class=\"sub-menu\" role=\"region\" aria-labelledby=\"submenu-label\"&gt;\n                &lt;span id=\"submenu-label\" class=\"sr-only\"&gt;Submenu&lt;/span&gt;\n                ...\n            &lt;/div&gt;\n        &lt;/li&gt;\n    &lt;/ul&gt;\n&lt;/nav&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "region",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Nested Navigation",
+        "route": "nested-navigation",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:59:30.000Z",
+        "modified": "2022-02-26T17:52:55.479Z",
+        "shortCode": "nestedNavigation",
+        "isAutoResolvable": true,
+        "engineRules": [
+            "navigation-not-nested"
+        ],
+        "severity": "medium",
+        "criteria": "landmarks",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Avoid using nested navigation structure",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Complex navigation components can be difficult for screen readers to handle. This is especially true if submenus or other complex structures exist. Nesting navigation regions makes it harder for screen reader users to understand a page's structure and disrupts orientation.",
+        "issueResolution": "<p>If the failing element is a custom navigation region, remove <strong>role=\"navigation\"</strong>. If the failing element is coded using a HTML <strong>&lt;nav&gt;</strong> tag, apply <strong>role=\"presentation\"</strong> or a role that is suitable for the function of the element.</p>\n<pre class=\"language-html\"><code>&lt;!-- Custom navigation region: remove role=\"navigation\" --&gt;\n&lt;div role=\"navigation\"&gt;\n  &lt;ul&gt;\n    &lt;li&gt;&lt;a href=\"#\"&gt;Home&lt;/a&gt;&lt;/li&gt;\n  &lt;/ul&gt;\n  &lt;div role=\"navigation\"&gt;&lt;!-- Remove role=\"navigation\" from this nested element --&gt;\n    &lt;ul&gt;\n      &lt;li&gt;&lt;a href=\"#\"&gt;Submenu item&lt;/a&gt;&lt;/li&gt;\n    &lt;/ul&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n&lt;!-- HTML &lt;nav&gt; tag: apply role=\"presentation\" --&gt;\n&lt;nav&gt;\n  &lt;ul&gt;\n    &lt;li&gt;&lt;a href=\"#\"&gt;Menu item&lt;/a&gt;&lt;/li&gt;\n    &lt;nav role=\"presentation\"&gt;\n      &lt;ul&gt;\n        &lt;li&gt;&lt;a href=\"#\"&gt;Submenu item&lt;/a&gt;&lt;/li&gt;\n      &lt;/ul&gt;\n    &lt;/nav&gt;\n  &lt;/ul&gt;\n&lt;/nav&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "role",
+                "suggestedFixValue": "presentation",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Broken List",
+        "route": "broken-list",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:07:53.000Z",
+        "modified": "2022-02-26T20:56:00.955Z",
+        "shortCode": "brokenList",
+        "severity": "high",
+        "criteria": "lists",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "List items should not exist outside of a list element",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "When list items are not contained in a list element, screen readers will not announce them as list items, preventing users from understanding the content as part of a structured list.",
+        "issueResolution": "<p>Enclose the list items in an <code>&lt;ol&gt;</code>, <code>&lt;ul&gt;</code>, or an element with <strong>role=\"list\"</strong>.</p>\n<pre class=\"language-html\"><code>&lt;!-- Before: list items without a parent list --&gt;\n&lt;li&gt;Item 1&lt;/li&gt;\n&lt;li&gt;Item 2&lt;/li&gt;\n&lt;li&gt;Item 3&lt;/li&gt;\n\n&lt;!-- After: using &lt;ul&gt; --&gt;\n&lt;ul&gt;\n  &lt;li&gt;Item 1&lt;/li&gt;\n  &lt;li&gt;Item 2&lt;/li&gt;\n  &lt;li&gt;Item 3&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;!-- After: using &lt;ol&gt; --&gt;\n&lt;ol&gt;\n  &lt;li&gt;Item 1&lt;/li&gt;\n  &lt;li&gt;Item 2&lt;/li&gt;\n  &lt;li&gt;Item 3&lt;/li&gt;\n&lt;/ol&gt;\n\n&lt;!-- After: using role=\"list\" --&gt;\n&lt;div role=\"list\"&gt;\n  &lt;div role=\"listitem\"&gt;Item 1&lt;/div&gt;\n  &lt;div role=\"listitem\"&gt;Item 2&lt;/div&gt;\n  &lt;div role=\"listitem\"&gt;Item 3&lt;/div&gt;\n&lt;/div&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "",
+                "suggestedFixHTML": "<ul><li>list item...</li></ul>"
+            }
+        ],
+        "engineRules": [
+            "list-item-within-list"
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html"
+        ]
+    },
+    {
+        "name": "Language Report",
+        "route": "language-report",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T11:17:00.000Z",
+        "modified": "2022-03-27T18:48:48.909Z",
+        "shortCode": "languageReport",
+        "severity": "medium",
+        "criteria": "document",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "The HTML element should include a proper \"lang\" attribute",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "For screen readers to know which language to announce the content to the users, they need to receive information about the dominant language of the page from the HTML tag of the document.",
+        "issueResolution": "<p>Include a lang attribute with the language code of the dominant language of the page, directly on the HTML tag. You can use only the two first characters of the language code, for example, use en rather than en-us or en-gb.</p>\n<pre class=\"language-html\"><code>&lt;html lang=\"en/es/fr/de/ru...\"&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "lang",
+                "suggestedFixValue": "en/es/de/ru...",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=211%2C242%2C412%2C311#language-of-page"
+        ]
+    },
+    {
+        "name": "Long Headings",
+        "route": "long-headings",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:14:02.000Z",
+        "modified": "2023-07-19T10:43:33.097Z",
+        "shortCode": "longHeadings",
+        "severity": "high",
+        "criteria": "general",
+        "WCAGLevel": "none",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Heading should be concise",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "The main heading of the document should be concise and descriptive. It should not be too lengthy (less than 160 chars).",
+        "issueResolution": "<p>To reset the heading role of an element you can either add the <strong>role=presentation</strong> attribute, or completely change the HTML tag from a <strong>heading</strong> tag to a <strong>SPAN, DIV, </strong>or a <strong>P (paragraph) </strong>tag.</p>\n<pre class=\"language-html\"><code>&lt;h3 role=\"presentation\"&gt;&lt;/h3&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "tag",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "p",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "role",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Multiple Main Headings",
+        "route": "multiple-main-headings",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-10T20:16:56.000Z",
+        "modified": "2022-03-27T18:53:06.429Z",
+        "shortCode": "multipleMainHeadings",
+        "severity": "medium",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "A page should not have more than one main heading",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "Each web page should have only one h1 element so that screen reader users can identify the main topic or purpose of the page. Multiple h1s can confuse users by suggesting there are multiple primary topics, disrupting navigation by headings and making it harder to understand the overall page structure.",
+        "issueResolution": "<p>Make sure that each web page has exactly one <strong>h1</strong> element so that screen reader users can identify the main subject of the page.</p>\n<pre class=\"language-html\"><code>&lt;!-- Correct: One h1 element per page --&gt;\n&lt;h1&gt;Main Page Title&lt;/h1&gt;\n&lt;h2&gt;Section Heading&lt;/h2&gt;\n&lt;p&gt;Content here...&lt;/p&gt;\n&lt;h2&gt;Another Section&lt;/h2&gt;\n&lt;p&gt;More content...&lt;/p&gt;\n\n&lt;!-- Incorrect: Multiple h1 elements --&gt;\n&lt;h1&gt;First Main Heading&lt;/h1&gt;\n&lt;h1&gt;Second Main Heading&lt;/h1&gt; &lt;!-- Change this to h2 or another heading level --&gt;</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Missing Form Button",
+        "route": "missing-form-button",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T10:00:16.000Z",
+        "modified": "2022-02-26T11:56:35.890Z",
+        "shortCode": "missingFormButton",
+        "severity": "low",
+        "criteria": "forms",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Form submission controls should have type=\"submit\"",
+        "addSROnlyCSS": true,
+        "saveSuccesses": true,
+        "issueDescription": "Adding type=\"submit\" to a control that submits a form ensures that screen readers users expect a change of context when they activate the control.",
+        "issueResolution": "<p>Include a submit button in your form. If the form doesn't technically require a visible submit button, including one just for screen readers using the <strong>screen-reader-only</strong> technique. This will provide the necessary clarity for screen reader users.</p>\n<pre class=\"language-html\"><code>&lt;button type=\"submit\" class=\"sr-only\"&gt;Submit&lt;/button&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "",
+                "suggestedFixHTML": "<button type=\"submit\">submit</button>"
+            }
+        ],
+        "issueWCAGLinks": null
+    },
+    {
+        "name": "Scroll Focus",
+        "route": "scroll-focus",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:15:15.000Z",
+        "modified": "2022-02-27T13:18:53.216Z",
+        "shortCode": "scrollFocus",
+        "severity": "medium",
+        "criteria": "keyboard",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Move focus to relevant element when a click has scroled the page",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "If the page scrolls to a different location after an element is clicked, the keyboard focus should move with the scroll. Otherwise, the next Tab key hit (attempt to navigate with the keyboard) will take the user back to the location before the scroll. ",
+        "issueResolution": "<p>When users click elements that scroll the page (like scroll to top/scroll to bottom), use JavaScript like the example below to focus the element or area they scroll to. If the element to focus isn't focusable by default (like links and buttons), giving it <strong>tabindex=-1&nbsp;</strong>will make it keyboard focusable but exclude it from tab navigation.</p>\n<p>Note: the <strong>preventScroll </strong>argument in the object passed to the scroll function tells the browser not to re-scroll the page.</p>\n<pre class=\"language-javascript\"><code>document.querySelector('.element-to-focus').focus({preventScroll: true})</code></pre>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html"
+        ]
+    },
+    {
+        "name": "Inline Popup Focus",
+        "route": "copy-of-scroll-focus",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2022-02-11T12:15:15.000Z",
+        "modified": "2022-03-08T00:35:25.259Z",
+        "shortCode": "inlinePopupFocus",
+        "severity": "high",
+        "criteria": "context",
+        "WCAGLevel": "AA",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Move focus into revealed element after trigger",
+        "addSROnlyCSS": false,
+        "saveSuccesses": true,
+        "issueDescription": "If an element because visible after clicking on another element, keyboard focus should move into that newly visible element. Otherwise, screen reader users will not know something has changed on the page.",
+        "issueResolution": "<p>s</p>",
+        "suggestedFix": [],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/quickref/#focus-visible"
+        ]
+    },
+    {
+        "name": "SVG Content",
+        "route": "svg-content",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2023-07-06T11:35:07.000Z",
+        "modified": "2023-07-09T09:50:15.863Z",
+        "shortCode": "svgContent",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "svg-discernible"
+        ],
+        "severity": "extreme",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "SVG discernible",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "All SVGs that are not used in the context of button icons must have discernible text.",
+        "issueResolution": "<p>Add a text alternative to the SVG.</p><pre class=\"language-html\"><code>&lt;svg aria-label=\"Descriptive text for the SVG\"&gt;\n  &lt;rect width=\"50\" height=\"50\" style=\"fill:rgb(0,0,255);\" /&gt;\n&lt;/svg&gt;\n\n&lt;svg aria-labelledby=\"svg-label\"&gt;\n  &lt;rect width=\"50\" height=\"50\" style=\"fill:rgb(0,0,255);\" /&gt;\n&lt;/svg&gt;\n&lt;span id=\"svg-label\"&gt;Descriptive text for the SVG&lt;/span&gt;\n\n&lt;svg&gt;\n  &lt;title&gt;Descriptive text for the SVG&lt;/title&gt;\n  &lt;rect width=\"50\" height=\"50\" style=\"fill:rgb(0,0,255);\" /&gt;\n&lt;/svg&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "attribute",
+                "suggestedFixKey": "aria-label",
+                "suggestedFixValue": "{suggestion}",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG22/quickref/?versions=2.0#non-text-content"
+        ]
+    },
+    {
+        "name": "Hidden Visible Content",
+        "route": "hidden-visible-content",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2024-01-06T11:35:07.000Z",
+        "modified": "2024-01-09T09:50:15.863Z",
+        "shortCode": "hiddenVisibleContent",
+        "isAutoResolvable": false,
+        "engineRules": [
+            "visibility-mismatch"
+        ],
+        "severity": "extreme",
+        "criteria": "general",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Visible content should not be hidden from assistive technology",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "If content remains visible on the screen but assigned aria-hidden=\"true\", it will be excluded from the accessibility tree. As a result, screen reader users will not have access to the same information as sighted users.",
+        "issueResolution": "<p>For visible content, ensure that it is not marked with <strong>aria-hidden=\"true\"</strong> or presented in such a way that screen readers and other assistive technologies cannot perceive it. Instead, use appropriate semantic HTML elements and ARIA roles to describe the content and its purpose. Here is an example of visible content that should be accessible to assistive technologies:\n<pre class=\"language-markup\"><code>&lt;!-- Incorrect: Content is visible but hidden from assistive technology --&gt;\n&lt;div aria-hidden=\"true\"&gt;Important content here&lt;/div&gt;\n\n&lt;!-- Correct: Content is visible and accessible to assistive technology --&gt;\n&lt;div&gt;Important content here&lt;/div&gt;</code></pre></p>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "aria-hidden",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": [
+            "https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html"
+        ]
+    },
+    {
+        "name": "Multiple Main Landmarks",
+        "route": "multiple-main-landmarks",
+        "ordering": 9999999,
+        "enabled": true,
+        "date": "2023-07-06T11:35:07.000Z",
+        "modified": "2023-07-09T09:50:15.863Z",
+        "shortCode": "multiMainLandmarks",
+        "severity": "high",
+        "criteria": "landmarks",
+        "WCAGLevel": "A",
+        "issueTutorialLink": "https://accessibe.com/support/knowledgebase",
+        "shortDescription": "Each page should include at most one main landmark",
+        "addSROnlyCSS": false,
+        "saveSuccesses": false,
+        "issueDescription": "A page typically presents one central subject, so a single main landmark establishes the boundaries of the primary content for screen reader users. Multiple main landmarks create uncertainty about the scope, leading to confusion and difficulty navigating the page.",
+        "issueResolution": "<p>Keep only the true primary area as <strong>&lt;main&gt;</strong> or <strong>role=\"main\"</strong>, and change others to suitable elements—such as <strong>&lt;section&gt;</strong>, <strong>&lt;nav&gt;</strong>, or a neutral <strong>&lt;div&gt;</strong>. In modular or single-page apps, only the active view should expose a main landmark; remove the role or unmount inactive modules, or hide them with <strong>hidden</strong> or <strong>display:none</strong>.</p>\n<pre class=\"language-html\"><code>&lt;!-- Keep only one main landmark --&gt;\n&lt;main&gt;\n  &lt;h1&gt;Primary Content&lt;/h1&gt;\n  &lt;p&gt;Main page content here...&lt;/p&gt;\n&lt;/main&gt;\n\n&lt;!-- Change other main elements to suitable alternatives --&gt;\n&lt;section&gt;\n  &lt;h2&gt;Secondary Content&lt;/h2&gt;\n  &lt;p&gt;Additional content...&lt;/p&gt;\n&lt;/section&gt;\n\n&lt;!-- For modular/single-page apps: hide inactive modules --&gt;\n&lt;main&gt;Active View Content&lt;/main&gt;\n&lt;main hidden&gt;Inactive View Content&lt;/main&gt;\n\n&lt;!-- Or use CSS to hide --&gt;\n&lt;main style=\"display: none;\"&gt;Inactive View Content&lt;/main&gt;</code></pre>",
+        "suggestedFix": [
+            {
+                "suggestedFixType": "tag",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "div",
+                "suggestedFixHTML": ""
+            },
+            {
+                "suggestedFixType": "removeAttribute",
+                "suggestedFixKey": "",
+                "suggestedFixValue": "role",
+                "suggestedFixHTML": ""
+            }
+        ],
+        "issueWCAGLinks": null
+    }
+]
